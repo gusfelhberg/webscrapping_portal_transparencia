@@ -1,6 +1,5 @@
-# EM DESENVOLVIMENTO - AINDA NÃO FUNCIONAL
-## webscrapping_portal_transparencia
+# webscrapping_portal_transparencia
 
-O objetivo deste script é buscar os dados de servidores/empregados/ocupantes de funções públicas disponíveis no Portal da Transparência (http://www.transparencia.gov.br)
+O objetivo deste script é buscar os dados de servidores/empregados/ocupantes de funções públicas disponíveis no Portal da Transparência (http://www.transparencia.gov.br) e salvá-los em formato XLSX.
 
-Inicialmente o script fará a consulta a partir de um CPF válido.
+O script lê a lista de CPFs a patir de um arquivo XLS chamado lista_cpfs.xlsx.
