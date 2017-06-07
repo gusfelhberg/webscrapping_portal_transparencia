@@ -95,21 +95,10 @@ def buscar_dados_cpf(lista_cpfs):
 
     return lista_vinculos
 
-def carregar_dados_cpf_pickle():
-    file = open("vinculos.pickle",'rb')
-    object_file = pickle.load(file)
-    file.close()
-    return object_file
-
-def salvar_dados_cpf_pickle(lista_vinculos):
-    filehandler = open("vinculos.pickle","wb")
-    pickle.dump(lista_vinculos,filehandler)
-    filehandler.close()
 
 def migrar_lista_para_dataframe(lista_vinculos):
 
     lista_dicts = []
-
 
     for i in range(len(lista_vinculos)):
             lista_dicts.append(dict(lista_vinculos[i]))
@@ -130,9 +119,7 @@ def carrega_lista_cpfs():
 lista_cpfs = carrega_lista_cpfs()
 
 lista_vinculos = buscar_dados_cpf(lista_cpfs)
-#salvar_dados_cpf_pickle(lista_vinculos)
 
-# lista_vinculos = carregar_dados_cpf_pickle()
 df = migrar_lista_para_dataframe(lista_vinculos)
 
 writer = pd.ExcelWriter('dados_portal_transparencia.xlsx', engine='xlsxwriter')
