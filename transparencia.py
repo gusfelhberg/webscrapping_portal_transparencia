@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from splinter import Browser
 import pickle
+import sys
 
 
 url_base = 'http://transparencia.gov.br/servidores/Servidor-ListaServidores.asp'
@@ -111,9 +112,12 @@ def migrar_lista_para_dataframe(lista_vinculos):
 
 def carrega_lista_cpfs():
 
-    cpfs_completo = pd.read_excel('lista_cpfs.xlsx',sheet_name=0)
+    cpfs_completo = pd.read_csv('lista_cpfs.txt')
     cpfs = cpfs_completo['cpfs'].tolist()
     cpfs = list(map(lambda x: str(x).zfill(11),cpfs))
+    if len(cpfs) == 0:
+        print('O arquivo com a lista de CPFs está vazio.')
+        sys.exit()
     return cpfs
 
 lista_cpfs = carrega_lista_cpfs()
