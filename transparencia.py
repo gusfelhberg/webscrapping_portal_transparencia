@@ -112,7 +112,7 @@ def migrar_lista_para_dataframe(lista_vinculos):
 
 def carrega_lista_cpfs():
 
-    cpfs_completo = pd.read_csv('lista_cpfs.txt')
+    cpfs_completo = pd.read_csv('/Users/felhberg/Dropbox/dev/webscrapping_portal_transparencia/lista_cpfs_completa.txt')
     cpfs = cpfs_completo['cpfs'].tolist()
     cpfs = list(map(lambda x: str(x).zfill(11),cpfs))
     if len(cpfs) == 0:
@@ -126,7 +126,9 @@ lista_vinculos = buscar_dados_cpf(lista_cpfs)
 
 df = migrar_lista_para_dataframe(lista_vinculos)
 
-writer = pd.ExcelWriter('dados_portal_transparencia.xlsx', engine='xlsxwriter')
+df.to_excel('dados_portal_transparencia.xlsx',sheet_name='dados')
 
-df.to_excel(writer, sheet_name='Dados')
-writer.save()
+#writer = pd.ExcelWriter('dados_portal_transparencia.xlsx', engine='xlsxwriter')
+
+#df.to_excel(writer, sheet_name='Dados')
+#writer.save()
